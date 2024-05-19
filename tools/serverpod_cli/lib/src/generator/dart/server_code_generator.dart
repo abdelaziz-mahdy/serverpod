@@ -23,7 +23,7 @@ class DartServerCodeGenerator extends CodeGenerator {
         p.joinAll([
           ...config.generatedServeModelPathParts,
           ...protocolFile.subDirParts,
-          '${protocolFile.fileName}.dart'
+          '${protocolFile.fileName}.g.dart'
         ]): serverSideGenerator
             .generateModelLibrary(protocolFile)
             .generateCode(),
@@ -42,9 +42,9 @@ class DartServerCodeGenerator extends CodeGenerator {
     );
 
     return {
-      p.joinAll([...config.generatedServeModelPathParts, 'protocol.dart']):
+      p.joinAll([...config.generatedServeModelPathParts, 'protocol.g.dart']):
           serverClassGenerator.generateProtocol().generateCode(),
-      p.joinAll([...config.generatedServeModelPathParts, 'endpoints.dart']):
+      p.joinAll([...config.generatedServeModelPathParts, 'endpoints.g.dart']):
           serverClassGenerator.generateServerEndpointDispatch().generateCode(),
     };
   }
